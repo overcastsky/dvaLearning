@@ -1,0 +1,24 @@
+.searchBox {
+  position: absolute;
+  right:30px;
+  top:5px;
+}
+
+.serachInput {
+  width:200px;
+  height:30px;
+  border:1px solid #ccc;
+  outline: none;
+  border-radius: 6px;
+}
+
+.serachBtn {
+  height: 30px;
+  width:60px;
+  border:none;
+  border-radius: 5px;
+  background-color: #108ee9;
+  color:#fff;
+  outline: none;
+  margin-left:10px;
+}

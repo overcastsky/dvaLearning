@@ -1,0 +1,21 @@
+.registerImg {
+  width:100%;
+  height:100%;
+  background-image: url('../../assets/register.jpg');
+  position: absolute;
+}
+
+.registerModel {
+  position: absolute;
+  right:38%;
+  top:30%;
+  font-weight: 600;
+}
+
+.UMid {
+  width:300px;
+} 
+
+.registerbtn {
+  margin-left: 104px;
+}

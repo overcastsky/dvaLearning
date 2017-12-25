@@ -1,27 +1,22 @@
 import React from 'react';
+import { connect } from 'dva';
+  
+
+import { Table, Pagination, Popconfirm, Button } from 'antd';
 import {
-  connect
-} from 'dva';
-import {
-  Table,
-  Pagination,
-  Popconfirm,
-  Button
-} from 'antd';
+  routerRedux,
+} from 'dva/router';
 import styles from './Users.css';
 import {
-  PAGE_SIZE
+  PAGE_SIZE,
 } from '../../constants';
-import {
-  routerRedux
-} from 'dva/router';
 import UserModal from './UserModal';
 
 function Users({
   dispatch,
   list: dataSource,
   total,
-  page: current
+  page: current,
 }) {
   function createHandle(values) {
     dispatch({
@@ -41,8 +36,8 @@ function Users({
     dispatch(routerRedux.push({
       pathname: '/users',
       query: {
-        page
-      }
+        page,
+      },
     }));
   }
 
@@ -51,7 +46,7 @@ function Users({
       type: 'users/patch',
       payload: {
         id,
-        values
+        values,
       },
     });
   }
@@ -60,7 +55,8 @@ function Users({
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    render: (text, record) => <a href="">{text}</a>,
+    // record
+    render: (text) => <a href="">{text}</a>,
   }, {
     title: 'Email',
     dataIndex: 'email',
@@ -74,28 +70,28 @@ function Users({
     key: 'operation',
     render: (text, record) => (
       <span className={styles.operation}>
-          <UserModal record={record} onOk={eidtHandle.bind(null, record.id)}>
-<a>Edit</a>
-          </UserModal>
-          <Popconfirm title="Confirm to delete?" onConfirm={deleteHandler.bind(null, record.id)}>
-            <a href="">Delete</a>
-          </Popconfirm>
-        </span>
+        <UserModal record={record} onOk={eidtHandle.bind(null, record.id)}>
+          <a>Edit</a>
+        </UserModal>
+        <Popconfirm title="Confirm to delete?" onConfirm={deleteHandler.bind(null, record.id)}>
+          <a href="">Delete</a>
+        </Popconfirm>
+      </span>
     ),
-  }, ];
+  }];
 
   return (
     <div className={styles.normal}>
       <div>
-       <div className={styles.create}>
+        <div className={styles.create}>
           <UserModal record={{}} onOk={createHandle}>
             <Button type="primary">Create User</Button>
           </UserModal>
-       </div>
+        </div>
         <Table
           columns={columns}
           dataSource={dataSource}
-          rowKey={record => record.id}
+          rowKey={(record) => record.id}
           pagination={false}
         />
         <Pagination
@@ -114,7 +110,7 @@ function mapStateToProps(state) {
   const {
     list,
     total,
-    page
+    page,
   } = state.users;
   return {
     list,

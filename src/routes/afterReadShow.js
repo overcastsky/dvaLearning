@@ -2,18 +2,18 @@ import React from 'react';
 import {
 	connect,
 } from 'dva';
-import styles from './Books.css';
-import BookComponent from '../components/Books/Books';
+import AfterReadShowComponent from '../components/AfterReadShow/AfterReadShow';
+import styles from './afterReadShow.css';
 import MainLayout from '../components/MainLayout/MainLayout';
 
-function Books() {
+function AfterReadShow() {
   return (
     <MainLayout location={location}>
       <div className={styles.normal}>
-        <BookComponent />
+        <AfterReadShowComponent />
       </div>
     </MainLayout>
   );
 }
 
-export default connect()(Books);
+export default connect()(AfterReadShow);

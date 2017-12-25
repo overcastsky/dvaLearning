@@ -18,12 +18,10 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default async function request(url, options) {
-
   const response = await fetch(url, options);
-
   checkStatus(response);
 
-  return response.json().then(function(data) {
+  return response.json().then((data) => {
     const ret = {
       data,
       headers: {},
@@ -35,5 +33,4 @@ export default async function request(url, options) {
 
     return ret;
   });
-
 }

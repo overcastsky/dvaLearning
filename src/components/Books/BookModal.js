@@ -1,14 +1,9 @@
-import React, {
-  Component
-} from 'react';
-import {
-  Modal,
-  Form,
-  Input,
-  DatePicker,
-  Select,
-} from 'antd';
-import moment from 'moment';
+// import moment from 'moment';
+import React, { Component } from 'react';
+  
+import { Modal, Form, Input, DatePicker, Select } from 'antd';
+ 
+const { RangePicker } = DatePicker;
 
 const FormItem = Form.Item;
 
@@ -36,21 +31,22 @@ class BookEditModal extends Component {
 
   okHandler = () => {
     const {
-      onOk
+      onOk,
     } = this.props;
 
     const {
       idLoanBook,
       idBookLog,
       barcode,
-      status,
+      // status,
     } = this.props.record;
 
     this.props.form.validateFields((err, values) => {
-      values.idLoanBook = idLoanBook;
-      values.idBookLog = idBookLog;
-      values.barcode = barcode;
-      values.status = values.status ? values.status : '空闲';
+      const params = values;
+      params.idLoanBook = idLoanBook;
+      params.idBookLog = idBookLog;
+      params.barcode = barcode;
+      params.status = values.status ? values.status : '空闲';
 
       if (!err) {
         onOk(values);
@@ -61,10 +57,10 @@ class BookEditModal extends Component {
 
   render() {
     const {
-      children
+      children,
     } = this.props;
     const {
-      getFieldDecorator
+      getFieldDecorator,
     } = this.props.form;
     const {
       name,
@@ -74,7 +70,7 @@ class BookEditModal extends Component {
       classType,
       location,
       owner,
-      barcode,
+      // barcode,
       abstracts,
       price,
       borrower,
@@ -82,16 +78,23 @@ class BookEditModal extends Component {
       status,
     } = this.props.record;
 
-    const editType = ['空闲', '借用'].indexOf(status) != -1 ? 'edit' : 'add';
-    const isDisable = editType == 'edit' ? true : false;
-    const changeStatus = status == '空闲' ? '借用' : '空闲';
-    const dateFormat = 'YYYY-MM-DD';
+    const editType = ['空闲', '借用'].indexOf(status) !== -1 ? 'edit' : 'add';
+    let isDisable = null;
+    // const isDisable = editType === 'edit' ? true : false;
+    if (editType === 'edit') {
+      isDisable = true;
+    } else {
+      isDisable = false;
+    }
+
+    const changeStatus = status === '空闲' ? '借用' : '空闲';
+    // const dateFormat = 'YYYY-MM-DD';
     const formItemLayout = {
       labelCol: {
-        span: 6
+        span: 6,
       },
       wrapperCol: {
-        span: 14
+        span: 14,
       },
     };
 
@@ -101,7 +104,7 @@ class BookEditModal extends Component {
           { children }
         </span>
         <Modal
-          title={editType + " Book"}
+          title={editType + 'Book'}
           visible={this.state.visible}
           onOk={this.okHandler}
           onCancel={this.hideModelHandler}
@@ -114,7 +117,7 @@ class BookEditModal extends Component {
               {
                 getFieldDecorator('name', {
                   initialValue: name,
-                })(<Input  disabled={isDisable}/>)
+                })(<Input disabled={isDisable} />)
               }
             </FormItem>
             <FormItem
@@ -145,12 +148,12 @@ class BookEditModal extends Component {
                 getFieldDecorator('type', {
                   rules: [
               { required: true, message: '请输入类别，!' },
-            ],
+                  ],
                   initialValue: type,
-                })(<Select  disabled={isDisable} style={{ width: 120 }}>
-      <Select.Option value="paper">实物书</Select.Option>
-      <Select.Option value="elec">电子书</Select.Option>
-    </Select>)
+                })(<Select disabled={isDisable} style={{ width: 120 }}>
+                  <Select.Option value="paper">实物书</Select.Option>
+                  <Select.Option value="elec">电子书</Select.Option>
+                </Select>)
               }
             </FormItem>
             <FormItem
@@ -161,15 +164,15 @@ class BookEditModal extends Component {
                 getFieldDecorator('classType', {
                   rules: [
               { required: true, message: '请输入分类，!' },
-            ],
+                  ],
                   initialValue: classType,
-                })(<Select   disabled={isDisable} style={{ width: 120 }}>
-      <Select.Option value="code">编程</Select.Option>
-      <Select.Option value="db">数据库</Select.Option>
-      <Select.Option value="art">文学</Select.Option>
-      <Select.Option value="think">思维</Select.Option>
-      <Select.Option value="project">项目管理</Select.Option>
-    </Select>)
+                })(<Select disabled={isDisable} style={{ width: 120 }}>
+                  <Select.Option value="code">编程</Select.Option>
+                  <Select.Option value="db">数据库</Select.Option>
+                  <Select.Option value="art">文学</Select.Option>
+                  <Select.Option value="think">思维</Select.Option>
+                  <Select.Option value="project">项目管理</Select.Option>
+                </Select>)
               }
             </FormItem>
             <FormItem
@@ -179,7 +182,7 @@ class BookEditModal extends Component {
               {
                 getFieldDecorator('location', {
                   initialValue: location,
-                })(<Input disabled={isDisable}/>)
+                })(<Input disabled={isDisable} />)
               }
             </FormItem>
             <FormItem
@@ -189,7 +192,7 @@ class BookEditModal extends Component {
               {
                 getFieldDecorator('owner', {
                   initialValue: owner,
-                })(<Input disabled={isDisable}/>)
+                })(<Input disabled={isDisable} />)
               }
             </FormItem>
             <FormItem
@@ -199,7 +202,7 @@ class BookEditModal extends Component {
               {
                 getFieldDecorator('abstracts', {
                   initialValue: abstracts,
-                })(<Input disabled={isDisable}/>)
+                })(<Input disabled={isDisable} />)
               }
             </FormItem>
             <FormItem
@@ -209,10 +212,10 @@ class BookEditModal extends Component {
               {
                 getFieldDecorator('price', {
                   initialValue: price,
-                })(<Input type="number" disabled={isDisable}/>)
+                })(<Input type="number" disabled={isDisable} />)
               }
             </FormItem>
-            { status == '空闲' &&
+            { status === '空闲' &&
             <FormItem
               {...formItemLayout}
               label="借阅者"
@@ -221,12 +224,12 @@ class BookEditModal extends Component {
                 getFieldDecorator('borrower', {
                   rules: [
               { required: true, message: '请填写借阅人信息!' },
-            ],
+                  ],
                   initialValue: borrower,
                 })(<Input />)
               }
             </FormItem>}
-            { status == '空闲' &&
+            { status === '空闲' &&
             <FormItem
               {...formItemLayout}
               label="预计归还时间"
@@ -234,13 +237,13 @@ class BookEditModal extends Component {
               {
                 getFieldDecorator('planReturnDate', {
                   rules: [
-              { required: true, message: '请输入日期!' },
-            ],
+                    { required: true, message: '请输入日期！' },
+                  ],
                   initialValue: planReturnDate,
-})(<Input placeholder="时间格式为YYYY-MM-DD"/>)
+                })(<RangePicker />)
               }
             </FormItem>}
-             { status == '空闲'&&
+            { status === '空闲' &&
             <FormItem
               {...formItemLayout}
               label="状态"
@@ -248,7 +251,7 @@ class BookEditModal extends Component {
               {
                 getFieldDecorator('status', {
                   initialValue: changeStatus,
-                })(<Input disabled={isDisable}/>)
+                })(<Input disabled={isDisable} />)
               }
             </FormItem>}
           </Form>

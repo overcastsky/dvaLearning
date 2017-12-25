@@ -1,6 +1,9 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb",
+  "env": {
+    "browser": true
+},
   "rules": {
     "arrow-body-style": [0],
     "consistent-return": [0],
@@ -20,9 +23,36 @@
     "react/forbid-prop-types": [0],
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "react/jsx-no-bind": [0],
+    "react/self-closing-comp":["error", {
+      "component": false,
+      "html": false
+    }],
     "react/prefer-stateless-function": [0],
     "react/prop-types": [0],
-    "require-yield": [1]
+    "require-yield": [1],
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
+    "no-tabs":"off",
+    "max-len": ["error", { "code": 150 }],
+    "quote-props": ["error", "consistent"],
+    "arrow-parens": ["error", "always"],
+    "eqeqeq": ["error", "always"],
+    "no-trailing-spaces": ["error", { "skipBlankLines": true }],
+    "eol-last": ["error", "never"],
+    "class-methods-use-this": "off",
+    "prefer-template": "off",
+    "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
+    "prefer-arrow-callback": [ "error", { "allowUnboundThis": false } ],
+    "object-shorthand": "off",
+    "operator-assignment": ["error", "never"],
+    "no-dupe-keys": "off",
+    "no-unused-vars": "off",
+    "no-unused-expressions": "off",
+    "no-alert": "off",
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "no-underscore-dangle": "off"
   },
   "parserOptions": {
     "ecmaFeatures": {

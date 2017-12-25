@@ -1,0 +1,49 @@
+
+.normal {
+  position: relative;
+}
+.normal .creader {
+  width:200px;
+  margin:20px 0 20px 10px ;
+}
+
+.creader input {
+  border-radius: 4px;
+  width: 149px;
+  height: 28px;
+  border:1px solid #ccc;
+  outline: none;
+}
+
+.normal .readContent {
+  margin:0 10px 0 10px;
+}
+
+.readContent textarea {
+  width: 100%;
+  height:500px;
+  resize: none;
+  overflow: auto;
+}
+
+
+.normal .submitBtn {
+  position: absolute;
+  right: 10px;
+  margin-top:15px;
+}
+
+.authorname {
+  margin-top: 16px;
+}
+
+.authorname input {
+  margin-left: 24px;
+}
+
+.selectbook {
+  position: absolute;
+  top: -2px;
+  left: 220px;
+}
+

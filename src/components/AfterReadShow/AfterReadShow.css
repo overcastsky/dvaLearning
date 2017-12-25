@@ -1,0 +1,12 @@
+.AfterReadlist {
+  list-style: none;
+  margin-top: 30px;
+}
+
+.AfterReadLi {
+  margin-left: 40px;
+}
+
+.AfterReadLi p {
+  margin-bottom: 20px;
+}

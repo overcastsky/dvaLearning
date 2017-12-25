@@ -1,15 +1,18 @@
+import Promise from 'promise-polyfill';
 import dva from 'dva';
 import './index.css';
-import Promise from 'promise-polyfill';
+
 
 if (!window.Promise) {
-	window.Promise = Promise;
+  window.Promise = Promise;
 }
 
 // 1. Initialize
 const app = dva();
 
-app.model(require("./models/books"));
+app.model(require('./models/books'));
+app.model(require('./models/login'));
+app.model(require('./models/register'));
 
 // 2. Plugins
 // app.use({});

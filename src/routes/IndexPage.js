@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-  connect
+  connect,
 } from 'dva';
 import styles from './IndexPage.css';
 import MainLayout from '../components/MainLayout/MainLayout.js';
 
 function IndexPage({
-  location
+  location,
 }) {
   return (
     <MainLayout location={location}>

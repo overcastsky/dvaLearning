@@ -5,111 +5,109 @@ export default {
   state: {
     list: [],
     total: null,
-    page: null
+    page: null,
   },
   reducers: {
     save(state, {
       payload: {
         data: list,
         total,
-        page
-      }
+        page,
+      },
     }) {
-      return {...state,
+      return { ...state,
         list,
         total,
-        page
+        page,
       };
     },
   },
   effects: { * fetch({
-      payload: page
+      payload: page,
     }, {
       call,
-      put
+      put,
     }) {
-      const {
+    const {
         data,
-        headers
+        headers,
       } = yield call(usersService.fetch, page);
-      yield put({
-        type: 'save',
-        payload: {
-          data,
-          total: parseInt(headers['x-total-count'], 10),
-          page: parseInt(page.page, 10)
-        }
-      });
-    },
+    yield put({
+      type: 'save',
+      payload: {
+        data,
+        total: parseInt(headers['x-total-count'], 10),
+        page: parseInt(page.page, 10),
+      },
+    });
+  },
     * remove({
-      payload: id
+      payload: id,
     }, {
       call,
       put,
     }) {
       yield call(usersService.remove, id);
       yield put({
-        type: 'reload'
+        type: 'reload',
       });
     },
     * patch({
       payload: {
         id,
-        values
-      }
+        values,
+      },
     }, {
       call,
-      put
+      put,
     }) {
       yield call(usersService.patch, id, values);
       yield put({
-        type: 'reload'
+        type: 'reload',
       });
     },
     * create({
-      payload: values
+      payload: values,
     }, {
       call,
-      put
+      put,
     }) {
       yield call(usersService.create, values);
       yield put({
-        type: 'reload'
+        type: 'reload',
       });
     },
     * reload(action, {
       put,
-      select
+      select,
     }) {
-      const page = yield select(state => state.users.page);
+      const page = yield select((state) => state.users.page);
       yield put({
         type: 'fetch',
         payload: {
-          page
-        }
+          page,
+        },
       });
     },
   },
   subscriptions: {
     setup({
       dispatch,
-      history
+      history,
     }) {
-
       return history.listen(({
         pathname,
-        query
+        query,
       }) => {
-
         if (pathname === '/users') {
           dispatch({
             type: 'fetch',
             payload: {
-              page: query.page
-            }
+              page: query.page,
+            },
           });
         }
       });
-    }
+    },
   },
 };

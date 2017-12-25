@@ -1,71 +1,67 @@
-import React, {
-	Component
-} from 'react';
-import {
-	Modal,
-	Form,
-	Input
-} from 'antd';
+import React, { Component } from 'react';
+	
 
+import { Modal, Form, Input } from 'antd';
+	
 const FormItem = Form.Item;
 
 class UserEditModal extends Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			visible: false,
-		};
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+    };
+  }
 
-	showModelHandler = (e) => {
-		if (e) e.preventDefault();
-		this.setState({
-			visible: true,
-		});
-	};
+  showModelHandler = (e) => {
+    if (e) e.preventDefault();
+    this.setState({
+      visible: true,
+		 });
+  };
 
-	hideModelHandler = () => {
-		this.setState({
-			visible: false,
-		});
-	};
+  hideModelHandler = () => {
+    this.setState({
+			  visible: false,
+	   });
+  };
 
-	okHandler = () => {
-		const {
-			onOk
+  okHandler = () => {
+    const {
+			onOk,
 		} = this.props;
-		this.props.form.validateFields((err, values) => {
-			if (!err) {
-				onOk(values);
-				this.hideModelHandler();
-			}
-		});
-	};
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        onOk(values);
+        this.hideModelHandler();
+			 }
+		 });
+	 };
 
-	render() {
-		const {
-			children
+  render() {
+    const {
+			children,
 		} = this.props;
-		const {
-			getFieldDecorator
+    const {
+      getFieldDecorator,
 		} = this.props.form;
-		const {
+    const {
 			name,
 			email,
-			website
+			website,
 		} = this.props.record;
-		const formItemLayout = {
-			labelCol: {
-				span: 6
-			},
-			wrapperCol: {
-				span: 14
-			},
-		};
+    const formItemLayout = {
+      labelCol: {
+        span: 6,
+      },
+      wrapperCol: {
+        span: 14,
+      },
+    };
 
-		return (
-			<span>
+    return (
+      <span>
         <span onClick={this.showModelHandler}>
           { children }
         </span>
@@ -109,8 +105,8 @@ class UserEditModal extends Component {
           </Form>
         </Modal>
       </span>
-		);
-	}
+    );
+  }
 }
 
 export default Form.create()(UserEditModal);

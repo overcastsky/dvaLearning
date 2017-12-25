@@ -18,7 +18,8 @@
     "moment": "^2.19.2",
     "promise-polyfill": "6.0.2",
     "react": "^15.4.0",
-    "react-dom": "^15.4.0"
+    "react-dom": "^15.4.0",
+    "redux-actions": "^2.2.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

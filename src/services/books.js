@@ -1,6 +1,7 @@
 import request from '../utils/request';
+
 export function fetch({
-  page = 1
+  page = 1,
 }) {
   return request(`/book/books?_page=${page}`, {
     method: 'GET',
@@ -9,11 +10,10 @@ export function fetch({
 }
 
 export function remove(id) {
-
   return request(`/book/books?idLoanBook=${id}`, {
     method: 'DELETE',
     mode: 'cors',
-    credentials: 'include'
+    credentials: 'include',
   });
 }
 
@@ -40,5 +40,18 @@ export function create(values) {
       'Accept': 'application/json',
     },
     body: JSON.stringify(values),
-  })
+  });
+}
+
+export function query(values) {
+  return request(`/book/books/`, {
+    method: 'POST',
+    mode: 'cors',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify(values),
+  });
 }

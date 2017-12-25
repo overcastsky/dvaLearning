@@ -1,0 +1,38 @@
+body {
+  position: relative;
+}
+
+.username {
+  width:300px;
+}
+
+.keyword {
+  width:300px;
+}
+
+.Formbox {
+  position: absolute;
+  top:35%;
+  left:38%;
+}
+
+.loginbtn {
+  margin-left:70px;
+  margin-top: 30px;
+}
+
+.bgImg {
+  width:100%;
+  height:100%;
+  background-image: url('../../assets/Library.jpg');
+  position: absolute;
+}
+
+.loginbtn .resBtn {
+  margin-left: 40px;
+}
+
+.fontColor {
+  color: #fff;
+}
+
