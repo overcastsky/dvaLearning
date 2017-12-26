@@ -107,17 +107,17 @@ module.exports = {
     const user = adminUsers.filter((item) => item.username === userName);
 
     if (user.length > 0 && user[0].password === password) {
-      res.json({ success: true, message: 'Ok' });
+      res.json({ resultCode: '000000', resultMesg: '数据请求成功' });
     } else {
 			// res.status(400).end()
-      res.json({ success: false, message: 'Ok' });
+      res.json({ resultCode: '111111', resultMesg: '数据请求失败' });
     }
   },
 	
   'POST /book/register'(req, res) {
     const data = req.body;
     if (data.username.length > 0 && data.password.length > 0) {
-			 res.json({ success: 'true', message: 'Ok' });
+      res.json({ resultCode: '000000', resultMesg: '数据请求成功' });
     } else {
 			 res.status(400).end();
     }

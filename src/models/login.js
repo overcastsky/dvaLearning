@@ -15,7 +15,7 @@ export default {
       
       try {
         // yield put(hashHistory.push('/indexPage'))
-        if (data.data.success) {
+        if (data.data.resultCode === '000000') {
           yield put(hashHistory.push('/books'));
         } else {
           alert('该用户名不存在,请注册后登录');
