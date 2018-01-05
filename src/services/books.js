@@ -44,7 +44,7 @@ export function create(values) {
 }
 
 export function query(values) {
-  return request(`/book/books/`, {
+  return request(`/book/query/`, {
     method: 'POST',
     mode: 'cors',
     credentials: 'include',

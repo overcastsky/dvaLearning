@@ -10,6 +10,7 @@ export default class SearchInput extends Component {
 
   searchVal() {
     const keywords = this.input.value;
+    this.input.value = '';
     // console.log(keywords);
     this.props.searchHandle(keywords);
   }

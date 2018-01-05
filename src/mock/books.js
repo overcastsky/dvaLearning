@@ -52,7 +52,7 @@ if (!global.booksListData) {
         return 2222;
       },
       'status': () => {
-        return '空闲';
+        return '借用';
       },
     }],
     'page': {
@@ -102,12 +102,26 @@ module.exports = {
     }, 200);
   },
 
+  'POST /book/query'(req, res) {
+    const { keywords } = req.body;
+    let newbooksListData = [];
+    booksListData.data.forEach((item, index) => {
+      if (item.name === keywords) {
+        newbooksListData = booksListData.data.splice(index, 1);
+        res.json({
+          booksListData: newbooksListData,
+        });
+      }
+      return true;
+    });
+  },
+
   'POST /book/login'(req, res) {
     const { userName, password } = req.body;
     const user = adminUsers.filter((item) => item.username === userName);
 
     if (user.length > 0 && user[0].password === password) {
-      res.json({ resultCode: '000000', resultMesg: '数据请求成功' });
+      res.json({ resultCode: '000000', resultMesg: '数据请求成功', state: '1', username: '李四' });
     } else {
 			// res.status(400).end()
       res.json({ resultCode: '111111', resultMesg: '数据请求失败' });
@@ -116,11 +130,7 @@ module.exports = {
 	
   'POST /book/register'(req, res) {
     const data = req.body;
-    if (data.username.length > 0 && data.password.length > 0) {
-      res.json({ resultCode: '000000', resultMesg: '数据请求成功' });
-    } else {
-			 res.status(400).end();
-    }
+    res.json({ resultCode: '000000', resultMesg: '数据请求成功' });
   },
 
   'GET /book/books'(req, res) {
@@ -218,6 +228,21 @@ module.exports = {
         id: id,
       });
     }, 200);
+  },
+
+  'POST /book/after_read'(req, res) {
+    const bookname = req.bookname;
+    const review = req.review;
+    const barcode = req.barcode;
+    res.json({ resultCode: '000000', resultMesg: '数据请求成功' });
+  },
+
+  'POST /book/book_show'(req, res) {
+    res.json({ resultCode: '000000', resultMesg: '数据请求成功', data: [{ bookname: 'CSS', author: '张三', content: '读后感' }] });
+  },
+
+  'POST /book/book_select'(req, res) {
+    res.json({ resultCode: '000000', resultMesg: '数据请求成功', data: [{ 'name': 'java', 'barcode': '1' }, { 'name': 'css', 'barcode': '2' }, { 'name': 'HTML', 'barcode': '3' }] });
   },
 
   

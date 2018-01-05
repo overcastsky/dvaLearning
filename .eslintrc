@@ -35,7 +35,7 @@
       "windows"
     ],
     "no-tabs":"off",
-    "max-len": ["error", { "code": 150 }],
+    "max-len": ["error", { "code": 245 }],
     "quote-props": ["error", "consistent"],
     "arrow-parens": ["error", "always"],
     "eqeqeq": ["error", "always"],

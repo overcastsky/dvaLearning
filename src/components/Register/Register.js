@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { hashHistory } from 'dva/router';
 // import connect from 'dva';
 // import routerRedux from 'dva/router';
-import { Form, Input, Checkbox, Button } from 'antd';
+import { Form, Input, Checkbox, Button, Tooltip, Icon, Select, message } from 'antd';
 
 import styles from './Register.css';
 // import { Link, hashHistory } from 'dva/router';
@@ -20,11 +20,33 @@ class Register extends Component {
     e.preventDefault();
     // 获取到文本框的值,等待传入
     // values
-    this.props.form.validateFieldsAndScroll((err) => {
+    this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         // 发送异步请求得到结果，判断是否注册成功
-        // console.log(values);
-        // hashHistory.push('/');
+        delete values.prefix;
+        delete values.agreement;
+        fetch('/book/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nickname: values.nickname,
+            phone: values.phone,
+            username: values.username,
+            password: values.password,
+            confirm: values.confirm,
+          }),
+        })
+        .then((respone) => respone.json())
+        .then((data) => {
+          if (data.resultCode === '000000') {
+            hashHistory.push('/books');
+          } else {
+            message.info('注册失败，请重试');
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       }
     });
   }
@@ -76,10 +98,46 @@ class Register extends Component {
       },
     };
 
+    const prefixSelector = getFieldDecorator('prefix', {
+      initialValue: '86',
+    })(
+      <Select style={{ width: 70 }}>
+        <Option value="86">+86</Option>
+        <Option value="87">+87</Option>
+      </Select>,
+    );
+
     return (
       <div className={styles.registerImg}>
         <div className={styles.registerModel}>
           <Form onSubmit={this.handleSubmit}>
+            <FormItem
+              {...formItemLayout}
+              label={(
+                <span>
+              name&nbsp;
+              <Tooltip title="What do you want others to call you?">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+                </span>
+          )}
+            >
+              {getFieldDecorator('nickname', {
+                rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+              })(
+                <Input />,
+          )}
+            </FormItem>
+            <FormItem
+              {...formItemLayout}
+              label="Phone Number"
+            >
+              {getFieldDecorator('phone', {
+                rules: [{ required: true, message: 'Please input your phone number!' }],
+              })(
+                <Input addonBefore={prefixSelector} style={{ width: '100%' }} />,
+          )}
+            </FormItem>
             <FormItem
               {...formItemLayout}
               label="UM-ID"
@@ -97,6 +155,20 @@ class Register extends Component {
                   <Input />
                 </div>,
               )}
+            </FormItem>
+            <FormItem
+              {...formItemLayout}
+              label="E-mail"
+            >
+              {getFieldDecorator('email', {
+                rules: [{
+                  type: 'email', message: 'The input is not valid E-mail!',
+                }, {
+                  required: true, message: 'Please input your E-mail!',
+                }],
+              })(
+                <Input />,
+          )}
             </FormItem>
             <FormItem
               {...formItemLayout}

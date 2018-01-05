@@ -33,17 +33,16 @@
   margin-top:15px;
 }
 
-.authorname {
-  margin-top: 16px;
-}
-
-.authorname input {
-  margin-left: 24px;
-}
 
 .selectbook {
   position: absolute;
-  top: -2px;
-  left: 220px;
+  top: -5px;
+  left: 75px;
+}
+
+
+.submitBtn {
+  position: absolute;
+  right: 0;
 }
 

@@ -58,11 +58,6 @@ const Login = ({ dispatch, form: { validateFields, getFieldDecorator } }) => {
               <Button type="primary" htmlType="submit" className="login-form-button">
                   Login
                 </Button>
-              <span className={styles.resBtn}>
-                <Button type="primary" htmlType="submit">
-                  <Link to="/register">Register</Link>
-                </Button>
-              </span>
             </div>
           </FormItem>
         </Form>

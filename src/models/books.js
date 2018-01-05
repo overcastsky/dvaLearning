@@ -93,7 +93,7 @@ export default {
     },
 
     * query({
-        payload: values,
+        payload: keywords,
 		}, {
 			call,
 			put,
@@ -101,7 +101,7 @@ export default {
       const {
 				data,
 				headers,
-			} = yield call(booksService.query, values);
+			} = yield call(booksService.query, keywords);
       yield put({
         type: 'save',
         payload: {

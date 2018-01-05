@@ -3,7 +3,7 @@ import { connect } from 'dva';
 
 import { Table, Pagination, Popconfirm, Button } from 'antd';
 
-import { routerRedux } from 'dva/router';
+import { routerRedux, Link } from 'dva/router';
 
 import styles from './Books.css';
 
@@ -65,11 +65,11 @@ function Books({ dispatch, list: dataSource, total, page: current }) {
     });
   }
 
-  function searchHandle(values) {
+  function searchHandle(keywords) {
     dispatch({
       type: 'books/query',
       payload: {
-        values,
+        keywords,
       },
     });
   }
@@ -139,15 +139,17 @@ function Books({ dispatch, list: dataSource, total, page: current }) {
     render: (text, record) => (
       <span className={styles.operation}>
         {record.status === '空闲' &&
-        <BookModal record={record} onOk={eidtHandle.bind(null, record.idLoanBook)}>
-          <a>借用</a>
+          <BookModal record={record} onOk={eidtHandle.bind(null, record.idLoanBook)}>
+            <a>借用</a>
           </BookModal>
 			}
-        {record.status === '借用' && <BookModal record={record} onOk={eidtHandle.bind(null, record.idLoanBook)}>
-          <a>归还</a>
-          </BookModal>}
+        {(record.status === '借用') && record.borrower !== sessionStorage.getItem('username') ? null :
+          (<BookModal record={record} onOk={eidtHandle.bind(null, record.idLoanBook)}>
+            <a>归还</a>
+          </BookModal>)
+      }
         <Popconfirm title="Confirm to delete?" onConfirm={deleteHandler.bind(null, record.idLoanBook)}>
-          <a href="">删除</a>
+          {sessionStorage.getItem('state') === '1' ? (<Button type="primary">删除</Button>) : null}
         </Popconfirm>
       </span>
 		),
@@ -159,6 +161,13 @@ function Books({ dispatch, list: dataSource, total, page: current }) {
         <div className={styles.create}>
           <BookModal record={{}} onOk={createHandle}>
             <Button type="primary">添加图书</Button>
+            {sessionStorage.getItem('state') === '1' ?
+              (<span className={styles.resBtn}>
+                <Button type="primary" htmlType="submit">
+                  <Link to="/register">Register</Link>
+                </Button>
+              </span>) : null
+            }
           </BookModal>
           <SearchInput searchHandle={searchHandle} />
         </div>

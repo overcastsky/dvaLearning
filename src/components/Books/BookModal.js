@@ -240,7 +240,7 @@ class BookEditModal extends Component {
                     { required: true, message: '请输入日期！' },
                   ],
                   initialValue: planReturnDate,
-                })(<RangePicker />)
+                })(<DatePicker />)
               }
             </FormItem>}
             { status === '空闲' &&

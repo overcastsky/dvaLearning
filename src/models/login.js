@@ -12,8 +12,11 @@ export default {
       payload: params,
     }, { put, call }) {
       const data = yield call(loginService.login, params);
-      
       try {
+        const state = data.data.state;
+        const username = data.data.username;
+        sessionStorage.setItem('state', state);
+        sessionStorage.setItem('username', username);
         // yield put(hashHistory.push('/indexPage'))
         if (data.data.resultCode === '000000') {
           yield put(hashHistory.push('/books'));
