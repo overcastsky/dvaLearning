@@ -11828,7 +11828,10 @@ form .ant-input-group-addon .ant-cascader-picker:only-child {
  .operation___3txel a {
    margin: 0 .5em;
  }
-/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+.resBtn___NDPgr {
+  margin-left: 40px;
+}/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 /* stylelint-disable declaration-bang-space-before */
 /* stylelint-disable declaration-bang-space-before */
 .ant-calendar-picker-container {
@@ -13570,7 +13573,85 @@ textarea.ant-time-picker-input {
   color:#fff;
   outline: none;
   margin-left:10px;
+}/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+/* stylelint-disable declaration-bang-space-before */
+/* stylelint-disable declaration-bang-space-before */
+.ant-message {
+  font-size: 12px;
+  position: fixed;
+  z-index: 1010;
+  width: 100%;
+  top: 16px;
+  left: 0;
+  pointer-events: none;
 }
+.ant-message-notice {
+  padding: 8px;
+  text-align: center;
+}
+.ant-message-notice:first-child {
+  margin-top: -8px;
+}
+.ant-message-notice-content {
+  padding: 8px 16px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  display: inline-block;
+  pointer-events: all;
+}
+.ant-message-success .anticon {
+  color: #00a854;
+}
+.ant-message-error .anticon {
+  color: #f04134;
+}
+.ant-message-warning .anticon {
+  color: #ffbf00;
+}
+.ant-message-info .anticon,
+.ant-message-loading .anticon {
+  color: #108ee9;
+}
+.ant-message .anticon {
+  margin-right: 8px;
+  font-size: 14px;
+  top: 1px;
+  position: relative;
+}
+.ant-message-notice.move-up-leave.move-up-leave-active {
+  -webkit-animation-name: MessageMoveOut;
+          animation-name: MessageMoveOut;
+  overflow: hidden;
+  -webkit-animation-duration: .3s;
+          animation-duration: .3s;
+}
+@-webkit-keyframes MessageMoveOut {
+  0% {
+    opacity: 1;
+    max-height: 150px;
+    padding: 8px;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+  }
+}
+@keyframes MessageMoveOut {
+  0% {
+    opacity: 1;
+    max-height: 150px;
+    padding: 8px;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+  }
+}
+
 .normal___3DKCg {
   position: relative;
 }
@@ -13605,18 +13686,17 @@ textarea.ant-time-picker-input {
   margin-top:15px;
 }
 
-.authorname___3-Lcs {
-  margin-top: 16px;
-}
-
-.authorname___3-Lcs input {
-  margin-left: 24px;
-}
 
 .selectbook___2ByGi {
   position: absolute;
-  top: -2px;
-  left: 220px;
+  top: -5px;
+  left: 75px;
+}
+
+
+.submitBtn___1giTm {
+  position: absolute;
+  right: 0;
 }
 
 body {
@@ -13638,19 +13718,15 @@ body {
 }
 
 .loginbtn___1vKFD {
-  margin-left:70px;
+  margin-left:107px;
   margin-top: 30px;
 }
 
 .bgImg___1suPI {
   width:100%;
   height:100%;
-  background-image: url(/static/Library.70d856e8.jpg);
+  background: url(/static/Library.70d856e8.jpg) no-repeat;
   position: absolute;
-}
-
-.loginbtn___1vKFD .resBtn___17Df- {
-  margin-left: 40px;
 }
 
 .fontColor___DEu-M {
@@ -13692,7 +13768,7 @@ body {
 .registerModel___1MN-o {
   position: absolute;
   right:38%;
-  top:30%;
+  top:24%;
   font-weight: 600;
 }
 
