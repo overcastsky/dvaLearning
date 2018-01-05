@@ -21,9 +21,6 @@ export default class AfterReadShow extends Component {
       this.setState({
         list: data.data,
       });
-    })
-    .catch((error) => {
-      console.log(error);
     });
   }
 

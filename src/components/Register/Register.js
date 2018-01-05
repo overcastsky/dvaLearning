@@ -43,9 +43,6 @@ class Register extends Component {
           } else {
             message.info('注册失败，请重试');
           }
-        })
-        .catch((error) => {
-          console.log(error);
         });
       }
     });

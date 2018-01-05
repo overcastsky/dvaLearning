@@ -101,9 +101,6 @@ export default class AfterRead extends Component {
           });
         }, 3000);
       }
-    })
-    .catch((error) => {
-      message.info('数据请求失败');
     });
   }
 

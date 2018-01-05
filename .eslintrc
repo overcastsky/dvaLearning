@@ -52,7 +52,8 @@
     "no-unused-expressions": "off",
     "no-alert": "off",
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off"
   },
   "parserOptions": {
     "ecmaFeatures": {
