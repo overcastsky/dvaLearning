@@ -65,11 +65,12 @@ function Books({ dispatch, list: dataSource, total, page: current }) {
     });
   }
 
-  function searchHandle(keywords) {
+  function searchHandle(keywords, page = 1) {
     dispatch({
       type: 'books/query',
       payload: {
         keywords,
+        page,
       },
     });
   }
@@ -78,7 +79,7 @@ function Books({ dispatch, list: dataSource, total, page: current }) {
     title: '书名',
     dataIndex: 'name',
     key: 'name',
-    render: (text) => <a href="">{text}</a>,
+    // render: (text) => <a href="">{text}</a>,
   }, {
     title: '作者',
     dataIndex: 'author',
@@ -110,10 +111,6 @@ function Books({ dispatch, list: dataSource, total, page: current }) {
     dataIndex: 'owner',
     key: 'owner',
   }, {
-    title: '编码',
-    dataIndex: 'barcode',
-    key: 'barcode',
-  }, {
     title: '摘要',
     dataIndex: 'abstracts',
     key: 'abstracts',
@@ -143,16 +140,21 @@ function Books({ dispatch, list: dataSource, total, page: current }) {
             <a>借用</a>
           </BookModal>
 			}
-        {(record.status === '借用') && record.borrower !== sessionStorage.getItem('username') ? null :
+        {(record.status === '借用') && record.borrowerUserName === sessionStorage.getItem('userUM') ?
           (<BookModal record={record} onOk={eidtHandle.bind(null, record.idLoanBook)}>
             <a>归还</a>
-          </BookModal>)
+          </BookModal>) : null
       }
+      </span>
+		),
+  }, {
+    render: (text, record) => (
+      <span className={styles.operation}>
         <Popconfirm title="Confirm to delete?" onConfirm={deleteHandler.bind(null, record.idLoanBook)}>
           {sessionStorage.getItem('state') === '1' ? (<Button type="primary">删除</Button>) : null}
         </Popconfirm>
       </span>
-		),
+    ),
   }];
 
   return (
@@ -160,7 +162,7 @@ function Books({ dispatch, list: dataSource, total, page: current }) {
       <div>
         <div className={styles.create}>
           <BookModal record={{}} onOk={createHandle}>
-            <Button type="primary">添加图书</Button>
+            {sessionStorage.getItem('state') === '1' ? (<Button type="primary">添加图书</Button>) : null}
             {sessionStorage.getItem('state') === '1' ?
               (<span className={styles.resBtn}>
                 <Button type="primary" htmlType="submit">
@@ -169,8 +171,9 @@ function Books({ dispatch, list: dataSource, total, page: current }) {
               </span>) : null
             }
           </BookModal>
-          <SearchInput searchHandle={searchHandle} />
+          {/* <SearchInput searchHandle={searchHandle} /> */}
         </div>
+        <SearchInput searchHandle={searchHandle} />
         <Table
           columns={columns}
           dataSource={data}

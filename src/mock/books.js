@@ -42,6 +42,9 @@ if (!global.booksListData) {
       'borrower': () => {
         return '张三';
       },
+      'borroweruserUM': () => {
+        return 'EX-YANGYANG015';
+      },
       'planReturnDate': () => {
         return null;
       },
@@ -102,8 +105,8 @@ module.exports = {
     }, 200);
   },
 
-  'POST /book/query'(req, res) {
-    const { keywords } = req.body;
+  'GET /book/query'(req, res) {
+    const keywords = req.query._keywords;
     let newbooksListData = [];
     booksListData.data.forEach((item, index) => {
       if (item.name === keywords) {
@@ -116,12 +119,17 @@ module.exports = {
     });
   },
 
+  'POST /book/reset'(req, res) {
+    const { userName, oldPassword, newPassword } = req.body;
+    res.json({ resultCode: '000000', resultMesg: '数据请求成功' });
+  },
+
   'POST /book/login'(req, res) {
     const { userName, password } = req.body;
     const user = adminUsers.filter((item) => item.username === userName);
 
     if (user.length > 0 && user[0].password === password) {
-      res.json({ resultCode: '000000', resultMesg: '数据请求成功', state: '1', username: '李四' });
+      res.json({ resultCode: '000000', type: 'new', resultMesg: '数据请求成功', state: '0', userUM: 'EX-YANGYANG015' });
     } else {
 			// res.status(400).end()
       res.json({ resultCode: '111111', resultMesg: '数据请求失败' });
@@ -173,7 +181,6 @@ module.exports = {
   'DELETE /book/books/:id'(req, res) {
     const id = parseInt(req.params.id, 10);
     booksListData.data = booksListData.data.filter((item) => {
-			// return item.id === id ? false : true;
       if (item.id === id) {
         return false;
       } else {
@@ -231,14 +238,14 @@ module.exports = {
   },
 
   'POST /book/after_read'(req, res) {
-    const bookname = req.bookname;
-    const review = req.review;
-    const barcode = req.barcode;
+    const bookname = req.bookName;
+    const review = req.rebiew;
+    const barcode = req.barCode;
     res.json({ resultCode: '000000', resultMesg: '数据请求成功' });
   },
 
   'POST /book/book_show'(req, res) {
-    res.json({ resultCode: '000000', resultMesg: '数据请求成功', data: [{ bookname: 'CSS', author: '张三', content: '读后感' }] });
+    res.json({ resultCode: '000000', resultMesg: '数据请求成功', data: [{ bookName: 'CSS', borrower: '张三', rebiew: '读后感' }, { bookName: 'javascript', borrower: '李四', rebiew: '读后感' }, { bookName: 'java', borrower: '王二', rebiew: '读后感' }] });
   },
 
   'POST /book/book_select'(req, res) {

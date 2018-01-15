@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
+
 import { hashHistory } from 'dva/router';
-// import connect from 'dva';
-// import routerRedux from 'dva/router';
+
 import { Form, Input, Checkbox, Button, Tooltip, Icon, Select, message } from 'antd';
 
 import styles from './Register.css';
-// import { Link, hashHistory } from 'dva/router';
 
 const FormItem = Form.Item;
-// const Option = Select.Option;
-// const AutoCompleteOption = AutoComplete.Option;
 
 class Register extends Component {
   state = {
     confirmDirty: false,
-    // autoCompleteResult: [],
   };
   handleSubmit = (e) => {
     e.preventDefault();
@@ -26,14 +22,16 @@ class Register extends Component {
         delete values.prefix;
         delete values.agreement;
         fetch('/book/register', {
+          credentials: 'include',
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
           body: JSON.stringify({
-            nickname: values.nickname,
+            name: values.nickname,
             phone: values.phone,
-            username: values.username,
-            password: values.password,
-            confirm: values.confirm,
+            userName: values.username,
           }),
         })
         .then((respone) => respone.json())
@@ -41,7 +39,7 @@ class Register extends Component {
           if (data.resultCode === '000000') {
             hashHistory.push('/books');
           } else {
-            message.info('注册失败，请重试');
+            message.info(data.resultMesg);
           }
         });
       }
@@ -70,8 +68,6 @@ class Register extends Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    // const { autoCompleteResult } = this.state;
-
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -167,7 +163,7 @@ class Register extends Component {
                 <Input />,
           )}
             </FormItem>
-            <FormItem
+            {/* <FormItem
               {...formItemLayout}
               label="Password"
             >
@@ -182,8 +178,8 @@ class Register extends Component {
                   <Input type="password" />
                 </div>,
               )}
-            </FormItem>
-            <FormItem
+            </FormItem> */}
+            {/* <FormItem
               {...formItemLayout}
               label="Confirm Password"
             >
@@ -198,7 +194,7 @@ class Register extends Component {
                   <Input type="password" />
                 </div>,
               )}
-            </FormItem>
+            </FormItem> */}
             <FormItem {...tailFormItemLayout}>
               {getFieldDecorator('agreement', {
                 valuePropName: 'checked',

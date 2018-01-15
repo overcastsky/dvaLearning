@@ -3,61 +3,7 @@ html, body, #root {
   height: 100%;
 }
 
-
-.normal___2EyWr {
-  font-family: Georgia, sans-serif;
-  margin-top: 3em;
-  text-align: center;
-}
-
-.title___3jOEu {
-  font-size: 2.5rem;
-  font-weight: normal;
-  letter-spacing: -1px;
-}
-
-.welcome___2XfgE {
-  height: 328px;
-  background: url(/static/yay.44dd3333.jpg) no-repeat center 0;
-  background-size: 388px 328px;
-}
-
-.list___2MhhI {
-  font-size: 1.2em;
-  margin-top: 1.8em;
-  list-style: none;
-  line-height: 1.5em;
-}
-
-.list___2MhhI code {
-  background: #f7f7f7;
-}
-.nomal___1_5Su {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	    -ms-flex-direction: column;
-	        flex-direction: column;
-	height: 100%;
-}
-
-.content___3XQdM {
-	-webkit-box-flex: 1;
-	    -ms-flex: 1;
-	        flex: 1;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-}
-
-.main___3W50Q {
-	padding: 0 8px;
-	-webkit-box-flex: 1;
-	    -ms-flex: 1 0 auto;
-	        flex: 1 0 auto;
-}/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 /* stylelint-disable declaration-bang-space-before */
 /* stylelint-disable declaration-bang-space-before */
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
@@ -3108,6 +3054,138 @@ samp {
   transition: height 0.15s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.15s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
 }
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+/* stylelint-disable declaration-bang-space-before */
+/* stylelint-disable declaration-bang-space-before */
+.ant-message {
+  font-size: 12px;
+  position: fixed;
+  z-index: 1010;
+  width: 100%;
+  top: 16px;
+  left: 0;
+  pointer-events: none;
+}
+.ant-message-notice {
+  padding: 8px;
+  text-align: center;
+}
+.ant-message-notice:first-child {
+  margin-top: -8px;
+}
+.ant-message-notice-content {
+  padding: 8px 16px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  display: inline-block;
+  pointer-events: all;
+}
+.ant-message-success .anticon {
+  color: #00a854;
+}
+.ant-message-error .anticon {
+  color: #f04134;
+}
+.ant-message-warning .anticon {
+  color: #ffbf00;
+}
+.ant-message-info .anticon,
+.ant-message-loading .anticon {
+  color: #108ee9;
+}
+.ant-message .anticon {
+  margin-right: 8px;
+  font-size: 14px;
+  top: 1px;
+  position: relative;
+}
+.ant-message-notice.move-up-leave.move-up-leave-active {
+  -webkit-animation-name: MessageMoveOut;
+          animation-name: MessageMoveOut;
+  overflow: hidden;
+  -webkit-animation-duration: .3s;
+          animation-duration: .3s;
+}
+@-webkit-keyframes MessageMoveOut {
+  0% {
+    opacity: 1;
+    max-height: 150px;
+    padding: 8px;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+  }
+}
+@keyframes MessageMoveOut {
+  0% {
+    opacity: 1;
+    max-height: 150px;
+    padding: 8px;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+  }
+}
+
+.normal___2EyWr {
+  font-family: Georgia, sans-serif;
+  margin-top: 3em;
+  text-align: center;
+}
+
+.title___3jOEu {
+  font-size: 2.5rem;
+  font-weight: normal;
+  letter-spacing: -1px;
+}
+
+.welcome___2XfgE {
+  height: 328px;
+  background: url(/static/yay.44dd3333.jpg) no-repeat center 0;
+  background-size: 388px 328px;
+}
+
+.list___2MhhI {
+  font-size: 1.2em;
+  margin-top: 1.8em;
+  list-style: none;
+  line-height: 1.5em;
+}
+
+.list___2MhhI code {
+  background: #f7f7f7;
+}
+.nomal___1_5Su {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	height: 100%;
+}
+
+.content___3XQdM {
+	-webkit-box-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.main___3W50Q {
+	padding: 0 8px;
+	-webkit-box-flex: 1;
+	    -ms-flex: 1 0 auto;
+	        flex: 1 0 auto;
+}/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 /* stylelint-disable declaration-bang-space-before */
 /* stylelint-disable declaration-bang-space-before */
 .ant-menu {
@@ -13557,16 +13635,17 @@ textarea.ant-time-picker-input {
 }
 
 .serachInput___2Ickp {
-  width:200px;
-  height:30px;
-  border:1px solid #ccc;
+  width: 200px;
+  height: 25px;
+  border: 1px solid #ccc;
   outline: none;
   border-radius: 6px;
+  margin-top: 6px;
 }
 
 .serachBtn___Zq9tK {
-  height: 30px;
-  width:60px;
+  height: 27px;
+  width:53px;
   border:none;
   border-radius: 5px;
   background-color: #108ee9;
@@ -13718,14 +13797,15 @@ body {
 }
 
 .loginbtn___1vKFD {
-  margin-left:107px;
+  margin-left:120px;
   margin-top: 30px;
 }
 
 .bgImg___1suPI {
   width:100%;
   height:100%;
-  background: url(/static/Library.70d856e8.jpg) no-repeat;
+  background: url(/static/Library.9e2fe13e.jpg) no-repeat;
+  background-size: cover;
   position: absolute;
 }
 
@@ -13733,7 +13813,15 @@ body {
   color: #fff;
 }
 
-.nomal___2B5Oh {
+.forgetPass___3M7tf {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.forgetPass___3M7tf a {
+  color: #fff;
+}.nomal___2B5Oh {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -13784,9 +13872,57 @@ body {
 }
 
 .AfterReadLi___2_ug3 {
+  position: relative;
   margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 40px;
 }
+
+.AfterReadLi___2_ug3:after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  border-bottom: 1px solid #666;
+  width: 200%;
+  height: 200%;
+  -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scale(0.5, 0.5);
+      -ms-transform: scale(0.5, 0.5);
+          transform: scale(0.5, 0.5);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* .AfterReadLi div {
+  width: 100%;
+  border: 1px solid #666; 
+} */
 
 .AfterReadLi___2_ug3 p {
   margin-bottom: 20px;
+}.picture___2UkOs {
+  width: 100%;
+  height: 100%;
+  background: url(/static/reset.216bf534.jpg) no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+
+.FormBox___21Ifo {
+  width: 300px;
+  position: absolute;
+  top:35%;
+  left:31%;
+}
+
+.FormBox___21Ifo input {
+  width: 300px;
+}
+
+.subBtn___21eZb {
+  position: absolute;
+  left: 212px;
+  top: 20px;
 }

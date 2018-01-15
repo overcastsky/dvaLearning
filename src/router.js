@@ -17,6 +17,8 @@ import Register from './routes/Register.js';
 
 import AfterReadShow from './routes/afterReadShow.js';
 
+import Reset from './routes/Reset.js';
+
 
 function RouterConfig({
 	history,
@@ -29,6 +31,7 @@ function RouterConfig({
       <Route path="/books" component={Books} />
       <Route path="/afterRead" component={AfterRead} />
       <Route path="/afterReadshow" component={AfterReadShow} />
+      <Route path="/reset" component={Reset} />
     </Router>
   );
 }

@@ -93,7 +93,7 @@ export default {
     },
 
     * query({
-        payload: keywords,
+        payload: { keywords, page },
 		}, {
 			call,
 			put,
@@ -106,8 +106,8 @@ export default {
         type: 'save',
         payload: {
           data,
-          // total: parseInt(data.booksListData.length, 10),
-          // page: parseInt(page.page, 10),
+          total: parseInt(data.booksListData.length, 10),
+          page: parseInt(page.page, 10),
         },
       });
     },

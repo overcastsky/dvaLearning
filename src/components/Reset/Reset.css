@@ -1,0 +1,24 @@
+.picture {
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/reset.jpg') no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+
+.FormBox {
+  width: 300px;
+  position: absolute;
+  top:35%;
+  left:31%;
+}
+
+.FormBox input {
+  width: 300px;
+}
+
+.subBtn {
+  position: absolute;
+  left: 212px;
+  top: 20px;
+}

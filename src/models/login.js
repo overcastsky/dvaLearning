@@ -1,4 +1,4 @@
-
+import { message } from 'antd';
 import { hashHistory } from 'dva/router';
 import * as loginService from '../services/login';
 
@@ -13,15 +13,18 @@ export default {
     }, { put, call }) {
       const data = yield call(loginService.login, params);
       try {
+        if (data.data.type === 'old') {
+          yield put(hashHistory.push('/reset'));
+          return;
+        }
         const state = data.data.state;
-        const username = data.data.username;
+        const userUM = data.data.userUM;
         sessionStorage.setItem('state', state);
-        sessionStorage.setItem('username', username);
-        // yield put(hashHistory.push('/indexPage'))
+        sessionStorage.setItem('userUM', userUM);
         if (data.data.resultCode === '000000') {
           yield put(hashHistory.push('/books'));
         } else {
-          alert('该用户名不存在,请注册后登录');
+          message.info(data.data.resultMesg);
         }
       } catch (error) {
         //
