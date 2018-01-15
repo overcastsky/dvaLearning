@@ -5,16 +5,17 @@
 }
 
 .serachInput {
-  width:200px;
-  height:30px;
-  border:1px solid #ccc;
+  width: 200px;
+  height: 25px;
+  border: 1px solid #ccc;
   outline: none;
   border-radius: 6px;
+  margin-top: 6px;
 }
 
 .serachBtn {
-  height: 30px;
-  width:60px;
+  height: 27px;
+  width:53px;
   border:none;
   border-radius: 5px;
   background-color: #108ee9;

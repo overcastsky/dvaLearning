@@ -6,6 +6,7 @@ export function fetch({
   return request(`/book/books?_page=${page}`, {
     method: 'GET',
     mode: 'cors',
+    credentials: 'include',
   });
 }
 
@@ -43,15 +44,10 @@ export function create(values) {
   });
 }
 
-export function query(values) {
-  return request(`/book/query/`, {
-    method: 'POST',
+export function query(keywords, page = 1) {
+  return request(`/book/query?_keywords=${keywords}&_page=${page}`, {
+    method: 'GET',
     mode: 'cors',
     credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8',
-      'Accept': 'application/json',
-    },
-    body: JSON.stringify(values),
   });
 }

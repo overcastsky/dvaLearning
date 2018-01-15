@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Select, Button, message } from 'antd';
-// import connect from 'dva';
-// const { TextArea } = Input;
-// import routerRedux from 'dva/router';
+
 import styles from './AfterRead.css';
 
 const Option = Select.Option;
@@ -26,17 +24,18 @@ export default class AfterRead extends Component {
 
   componentDidMount() {
     fetch('/book/book_select', {
+      credentials: 'include',
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Accept': 'application/json',
+      },
     })
     .then((response) => response.json())
     .then((data) => {
       this.setState({
         dataList: data.data,
       });
-    })
-    .catch((error) => {
-      message.info('数据请求失败');
     });
   }
 
@@ -66,18 +65,22 @@ export default class AfterRead extends Component {
     const barcode = this.state.barcode;
     // 将读书感信息发送异步请求
     fetch('/book/after_read', {
+      credentials: 'include',
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
       body: JSON.stringify({
-        review: review,
-        bookname: bookname,
-        barcode: barcode,
+        rebiew: review,
+        bookName: bookname,
+        barCode: barcode,
       }),
     })
     .then((response) => response.json())
     .then((data) => {
       if (data.resultCode === '000000') {
-        message.info('提交成功');
+        message.info(data.resultMesg);
         // 提交成功清空文本域
         this.afterReadcontent.value = '';
         // 更改开关状态

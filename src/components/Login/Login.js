@@ -55,6 +55,11 @@ const Login = ({ dispatch, form: { validateFields, getFieldDecorator } }) => {
               <Checkbox><span className={styles.fontColor}>Remember me</span></Checkbox>,
               )}
             <div className={styles.loginbtn}>
+              <div className={styles.forgetPass}>
+                <Link to="/reset">
+                  修改密码?
+                </Link>
+              </div>
               <Button type="primary" htmlType="submit" className="login-form-button">
                   Login
                 </Button>
