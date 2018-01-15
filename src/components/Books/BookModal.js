@@ -218,20 +218,6 @@ class BookEditModal extends Component {
             { status === '空闲' &&
             <FormItem
               {...formItemLayout}
-              label="借阅者"
-            >
-              {
-                getFieldDecorator('borrower', {
-                  rules: [
-              { required: true, message: '请填写借阅人信息!' },
-                  ],
-                  initialValue: borrower,
-                })(<Input />)
-              }
-            </FormItem>}
-            { status === '空闲' &&
-            <FormItem
-              {...formItemLayout}
               label="预计归还时间"
             >
               {

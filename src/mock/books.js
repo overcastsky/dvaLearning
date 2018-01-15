@@ -55,7 +55,7 @@ if (!global.booksListData) {
         return 2222;
       },
       'status': () => {
-        return '借用';
+        return '空闲';
       },
     }],
     'page': {

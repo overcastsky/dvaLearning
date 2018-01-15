@@ -63,6 +63,7 @@ export default {
 			call,
 			put,
 		}) {
+      console.log(values);
       yield call(booksService.patch, id, values);
       yield put({
         type: 'reload',
