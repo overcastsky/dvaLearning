@@ -3146,7 +3146,7 @@ samp {
 
 .welcome___2XfgE {
   height: 328px;
-  background: url(/static/yay.44dd3333.jpg) no-repeat center 0;
+  background: url(/book/static/yay.44dd3333.jpg) no-repeat center 0;
   background-size: 388px 328px;
 }
 
@@ -13804,7 +13804,7 @@ body {
 .bgImg___1suPI {
   width:100%;
   height:100%;
-  background: url(/static/Library.9e2fe13e.jpg) no-repeat;
+  background: url(/book/static/Library.70d856e8.jpg) no-repeat;
   background-size: cover;
   position: absolute;
 }
@@ -13849,14 +13849,15 @@ body {
 }.registerImg___1auSk {
   width:100%;
   height:100%;
-  background-image: url(/static/register.80c06d26.jpg);
+  background: url(/book/static/register.80c06d26.jpg) no-repeat;
   position: absolute;
+  background-size: cover;
 }
 
 .registerModel___1MN-o {
   position: absolute;
-  right:38%;
-  top:24%;
+  right:41%;
+  top:40%;
   font-weight: 600;
 }
 
@@ -13905,7 +13906,7 @@ body {
 }.picture___2UkOs {
   width: 100%;
   height: 100%;
-  background: url(/static/reset.216bf534.jpg) no-repeat;
+  background: url(/book/static/reset.216bf534.jpg) no-repeat;
   background-size: cover;
   position: absolute;
 }

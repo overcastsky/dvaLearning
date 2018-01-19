@@ -25,12 +25,12 @@ class Register extends Component {
           credentials: 'include',
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json; charset=utf-8',
             'Accept': 'application/json',
           },
           body: JSON.stringify({
             name: values.nickname,
-            phone: values.phone,
+            // phone: values.phone,
             userName: values.username,
           }),
         })
@@ -121,7 +121,7 @@ class Register extends Component {
                 <Input />,
           )}
             </FormItem>
-            <FormItem
+            {/* <FormItem
               {...formItemLayout}
               label="Phone Number"
             >
@@ -130,7 +130,7 @@ class Register extends Component {
               })(
                 <Input addonBefore={prefixSelector} style={{ width: '100%' }} />,
           )}
-            </FormItem>
+            </FormItem> */}
             <FormItem
               {...formItemLayout}
               label="UM-ID"
@@ -149,7 +149,7 @@ class Register extends Component {
                 </div>,
               )}
             </FormItem>
-            <FormItem
+            {/* <FormItem
               {...formItemLayout}
               label="E-mail"
             >
@@ -162,7 +162,7 @@ class Register extends Component {
               })(
                 <Input />,
           )}
-            </FormItem>
+            </FormItem> */}
             {/* <FormItem
               {...formItemLayout}
               label="Password"

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from './SearchInput.css';
 // import { connect } from 'dva';
-// import PropTypes from 'prop-types';
 
 export default class SearchInput extends Component {
   // constructor(props) {
   //   super(props)
   // }
-
   searchVal() {
     const keywords = this.input.value;
     this.props.searchHandle(keywords);
