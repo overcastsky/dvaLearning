@@ -24,7 +24,7 @@ export default {
   },
   effects: {
     * fetch({
-			payload: page,
+      payload: page,
 		}, {
 			call,
 			put,
@@ -63,7 +63,6 @@ export default {
 			call,
 			put,
 		}) {
-      console.log(values);
       yield call(booksService.patch, id, values);
       yield put({
         type: 'reload',
@@ -92,7 +91,7 @@ export default {
         },
       });
     },
-
+    
     * query({
         payload: { keywords, page },
 		}, {
@@ -102,7 +101,7 @@ export default {
       const {
 				data,
 				headers,
-			} = yield call(booksService.query, keywords);
+      } = yield call(booksService.query, keywords, page);
       yield put({
         type: 'save',
         payload: {
@@ -120,13 +119,22 @@ export default {
 		}) {
       return history.listen(({
 				pathname,
-				query,
+        query,
 			}) => {
         if (pathname === '/books') {
           dispatch({
             type: 'fetch',
             payload: {
               page: query.page,
+              type: 'Y',
+            },
+          });
+        } else if (pathname === '/bookquery') {
+          dispatch({
+            type: 'fetch',
+            payload: {
+              page: query.page,
+              type: 'N',
             },
           });
         }

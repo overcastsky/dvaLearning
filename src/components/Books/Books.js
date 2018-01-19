@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'dva';
 
 import { Table, Pagination, Popconfirm, Button } from 'antd';
@@ -18,12 +19,10 @@ function Books({ dispatch, list: dataSource, total, page: current }) {
   // current = current ? current : 1;
   const booksListData = dataSource && dataSource.booksListData;
   const data = booksListData && booksListData.slice((query.page - 1) * PAGE_SIZE, query.page * PAGE_SIZE);
-
   const typeOptions = {
     'paper': '实物书',
     'elec': '电子书',
   };
-
   const classtypeOptions = {
     'code': '编程',
     'db': '数据库',
@@ -48,7 +47,7 @@ function Books({ dispatch, list: dataSource, total, page: current }) {
 
   function pageChangeHandle(page) {
     dispatch(routerRedux.push({
-      pathname: '/books',
+      pathname: '/bookquery',
       query: {
         page,
       },

@@ -2,8 +2,9 @@ import request from '../utils/request';
 
 export function fetch({
   page = 1,
+  type,
 }) {
-  return request(`/book/books?_page=${page}`, {
+  return request(`/book/books?_page=${page}&type=${type}`, {
     method: 'GET',
     mode: 'cors',
     credentials: 'include',
