@@ -1,5 +1,6 @@
 import Promise from 'promise-polyfill';
 import dva from 'dva';
+import { browserHistory } from 'dva/router';
 import './index.css';
 
 
@@ -8,7 +9,8 @@ if (!window.Promise) {
 }
 
 // 1. Initialize
-const app = dva();
+// const app = dva();
+const app = dva({ history: browserHistory });
 
 app.model(require('./models/books'));
 app.model(require('./models/login'));

@@ -3,9 +3,9 @@ import {
 	connect,
 } from 'dva';
 
-import RegisterComponent from '../components/Register/Register';
+import RegisterComponent from '../../components/Register/Register';
 import styles from './Register.css';
-import MainLayout from '../components/MainLayoutLogin/MainLayoutLogin';
+import MainLayout from '../../components/MainLayoutLogin/MainLayoutLogin';
 
 function Register() {
   return (

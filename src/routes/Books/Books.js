@@ -3,8 +3,8 @@ import {
 	connect,
 } from 'dva';
 import styles from './Books.css';
-import BookComponent from '../components/Books/Books';
-import MainLayout from '../components/MainLayout/MainLayout';
+import BookComponent from '../../components/Books/Books';
+import MainLayout from '../../components/MainLayout/MainLayout';
 
 function Books() {
   return (

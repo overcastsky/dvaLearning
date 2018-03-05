@@ -2,9 +2,9 @@ import React from 'react';
 import {
 	connect,
 } from 'dva';
-import AfterReadShowComponent from '../components/AfterReadShow/AfterReadShow';
+import AfterReadShowComponent from '../../components/AfterReadShow/AfterReadShow';
 import styles from './afterReadShow.css';
-import MainLayout from '../components/MainLayout/MainLayout';
+import MainLayout from '../../components/MainLayout/MainLayout';
 
 function AfterReadShow() {
   return (
